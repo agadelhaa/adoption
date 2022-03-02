@@ -18,14 +18,14 @@ require 'faker'
   gender = Faker::Gender.binary_type
   age = rand(1..12)
   size = Faker::Creature::Dog.size
-  species = ["Dog", "Cat"].sample
-  description = " A #{species}, #{age} years old and in need of a loving family. "
+  specie = ["Dog", "Cat"].sample
+  description = " A #{specie}, #{age} years old and in need of a loving family. "
 
   Animal.create(user_id: user_id,
                 name: animal_name,
                 gender: gender,
                 age: age,
                 size: size,
-                species: species,
+                specie: specie,
                 description: description)
 end
