@@ -22,6 +22,7 @@ class AnimalsController < ApplicationController
 
   def show
     @animal = Animal.find(params[:id])
+    @adopted = @animal.orders.select { |animal| animal.adopted }
   end
 
   def edit

@@ -1,19 +1,34 @@
 class OrdersController < ApplicationController
   def new
-    @user_id = current_user.id
     @animal = Animal.find(params[:animal_id])
     @order = Order.new
   end
 
   def create
     @animal = Animal.find(params[:animal_id])
-    @user_id = current_user.id
-    @order = Order.new(order_params)
+    @order = Order.new
     @order.animal = @animal
+    @order.user = current_user
     if @order.save
-      redirect_to animal_path(@animal)
+      redirect_to animal_path(@animal), notice: 'order was successfully created, check your email for contact.'
     else
       render 'animal/show'
+    end
+  end
+
+  def edit
+    @animal = Animal.find(params[:animal_id])
+    @order = Order.find(params[:id])
+  end
+
+  def update
+    @animal = Animal.find(params[:animal_id])
+    @order = Order.find(params[:id])
+    @order.update(order_params)
+    if @order.save
+      redirect_to animal_path(@order.animal)
+    else
+      render :edit
     end
   end
 

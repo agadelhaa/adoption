@@ -1,11 +1,12 @@
 <div class='container'>
   <h2><%= @animal.name%></h2>
-  <h3 class='pb-3'><% if  @order %>
-        <%= "adopted" %>
+<h3>
+    <% if @adopted.empty? %>
+      <%= "Not adopted" %>
       <% else %>
-        <%= "Not adopted" %>
-      <% end %>
-  </h3>
+      <%= "Adopted" %>
+    <% end %>
+</h3>
   <% if @animal.photos.attached? %>
 
     <% @animal.photos.each do |photo| %>
@@ -19,5 +20,8 @@
   <p><strong>Contact:</strong> <%= @animal.user.email %></p>
   <%= link_to 'Back', animals_path, class: 'btn btn-success mt-3' %>
   <%= link_to 'Edit', edit_animal_path(@animal), class: 'btn btn-success mt-3' %>
+  <% if @adopted.empty? %>
+    <%= link_to 'I`m interested', animal_orders_path(@animal), method: :post, class: 'btn btn-success mt-3' %>
+  <% end %>
   <%= link_to 'Delete', animal_path(@animal), method: :delete, data: { confirm: "Are you sure you want to remove #{@animal.name} from adoption list"}, class: 'btn btn-danger mt-3' %>
 </div>
