@@ -1,0 +1,14 @@
+<div class="container mt-5">
+  <div class="list-banner mt-5">
+    <h1>Put your email to start negotiate</h1>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <%= simple_form_for[@user, @animal] do |f| %>
+        <%= f.input :email, placeholder: 'Add a valid email' %>
+        <%= f.submit "Update", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+  <%= link_to 'Back', root_path, class: 'btn btn-success mt-3' %>
+</div>
