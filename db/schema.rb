@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_02_203321) do
+ActiveRecord::Schema.define(version: 2022_03_03_141807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,16 @@ ActiveRecord::Schema.define(version: 2022_03_02_203321) do
     t.index ["user_id"], name: "index_animals_on_user_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.boolean "adopted", default: false
+    t.bigint "user_id", null: false
+    t.bigint "animal_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["animal_id"], name: "index_orders_on_animal_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -73,4 +83,6 @@ ActiveRecord::Schema.define(version: 2022_03_02_203321) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "animals", "users"
+  add_foreign_key "orders", "animals"
+  add_foreign_key "orders", "users"
 end
