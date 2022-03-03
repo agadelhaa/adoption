@@ -1,0 +1,20 @@
+<div class="container mt-5">
+  <div class="list-banner mt-5">
+    <h1>Add an animal for adoption</h1>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <%= simple_form_for(@animal) do |f| %>
+        <%= f.input :name, placeholder: 'Add the little friend name' %>
+        <%= f.input :gender, placeholder: 'Add a gender' %>
+        <%= f.input :age, placeholder: 'Tell us a approximate age of our friend' %>
+        <%= f.input :size, placeholder: 'Tell us a approximate size' %>
+        <%= f.input :specie, placeholder: 'Tell us our friend specie' %>
+        <%= f.input :description, placeholder: 'Tell more about our little friend and where you found then' %>
+        <%= f.input :photo, as: :file %>
+        <%= f.submit "Update", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+  <%= link_to 'Back', root_path, class: 'btn btn-success mt-3' %>
+</div>

@@ -1,0 +1,16 @@
+<h2><%= @animal.name%></h2>
+<h3>
+    <% if @adopted.empty? %>
+      <%= "Not adopted" %>
+      <% else %>
+      <%= "Adopted" %>
+    <% end %>
+</h3>
+<p> <strong>Size:</strong> <%= @animal.size%> | <strong>Gender:</strong> <%= @animal.gender %></p>
+<p> <strong>Description:</strong> <%= @animal.description %></p>
+
+<% if @adopted.empty? %>
+<%= link_to 'I`m interested', animal_orders_path(@animal), method: :post, class: 'btn btn-success mt-3' %>
+<% end %>
+<%= link_to 'Back', root_path, class: 'btn btn-success mt-3' %>
+<%= link_to 'Edit', edit_animal_path(@animal), class: 'btn btn-success mt-3' %>
