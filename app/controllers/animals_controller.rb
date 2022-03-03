@@ -12,7 +12,7 @@ class AnimalsController < ApplicationController
 
     @animal = Animal.new(animal_params)
     @animal.user = current_user
-   
+
     if @animal.save
       redirect_to animals_path, notice: 'animal was successfully created.'
     else
@@ -48,6 +48,6 @@ class AnimalsController < ApplicationController
   private
 
   def animal_params
-    params.require(:animal).permit(:name, :gender, :age, :size, :specie, :description, :photo)
+    params.require(:animal).permit(:name, :gender, :age, :size, :specie, :description, photos: [])
   end
 end
