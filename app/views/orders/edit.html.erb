@@ -1,4 +1,4 @@
-<%= form_for(@order) do |f| %>
+<%= simple_form_for [ @animal, @order ] do |f| %>
   <%= f.label :adopted %>
   <%= f.check_box :adopted %>
   <%= f.submit %>

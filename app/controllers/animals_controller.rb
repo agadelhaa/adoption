@@ -12,7 +12,7 @@ class AnimalsController < ApplicationController
 
     @animal = Animal.new(animal_params)
     @animal.user = current_user
-   
+
     if @animal.save
       redirect_to animals_path, notice: 'animal was successfully created.'
     else
@@ -22,6 +22,7 @@ class AnimalsController < ApplicationController
 
   def show
     @animal = Animal.find(params[:id])
+    @adopted = @animal.orders.select { |animal| animal.adopted }
   end
 
   def edit
