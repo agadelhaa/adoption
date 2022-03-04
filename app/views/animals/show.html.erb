@@ -19,9 +19,14 @@
   <p><strong>Where am I:</strong> <%= @animal.user.address %></p>
   <p><strong>Contact:</strong> <%= @animal.user.email %></p>
   <%= link_to 'Back', animals_path, class: 'btn btn-success mt-3' %>
-  <%= link_to 'Edit', edit_animal_path(@animal), class: 'btn btn-success mt-3' %>
-  <% if @adopted.empty? %>
+  <% if policy(@animal).edit? %>
+    <%= link_to 'Edit', edit_animal_path(@animal), class: 'btn btn-success mt-3' %>
+  <% end %>
+
+  <% if @adopted == false || current_user != @animal.user %>
     <%= link_to 'I`m interested', animal_orders_path(@animal), method: :post, class: 'btn btn-success mt-3' %>
   <% end %>
-  <%= link_to 'Delete', animal_path(@animal), method: :delete, data: { confirm: "Are you sure you want to remove #{@animal.name} from adoption list"}, class: 'btn btn-danger mt-3' %>
+  <% if policy(@animal).edit? %>
+    <%= link_to 'Delete', animal_path(@animal), method: :delete, data: { confirm: "Are you sure you want to remove #{@animal.name} from adoption list"}, class: 'btn btn-danger mt-3' %>
+  <% end %>
 </div>
