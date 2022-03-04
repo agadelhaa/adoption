@@ -8,7 +8,6 @@
     <% end %>
 </h3>
   <% if @animal.photos.attached? %>
-
     <% @animal.photos.each do |photo| %>
       <%= cl_image_tag photo.key, height: 150, width: 150, crop: :fill %>
     <% end %>
@@ -18,6 +17,13 @@
 
   <p><strong>Where am I:</strong> <%= @animal.user.address %></p>
   <p><strong>Contact:</strong> <%= @animal.user.email %></p>
+
+<ul>
+  <% @animal.orders.each do |order| %>
+  <li> Someone is interested in adopting this pet, send an email to <%= order.user.email %>
+  <% end %>
+</ul>
+
   <%= link_to 'Back', animals_path, class: 'btn btn-success mt-3' %>
   <%= link_to 'Edit', edit_animal_path(@animal), class: 'btn btn-success mt-3' %>
   <% if @adopted.empty? %>
