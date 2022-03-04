@@ -21,6 +21,7 @@
         </div>
       </div>
     <% end %>
+    <%= link_to 'Ogout', destroy_user_session_path, method: :delete, class: 'btn btn-success mt-3' %>
     <% if policy(Animal).create? %>
       <small class="text-right flex-shrink-0"><%= link_to 'Add new animal', new_animal_path(@animal), class: 'btn btn-success mt-3' %></small>
     <% end %>
