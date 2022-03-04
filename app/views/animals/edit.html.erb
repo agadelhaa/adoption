@@ -11,7 +11,7 @@
         <%= f.input :size, placeholder: 'Tell us a approximate size' %>
         <%= f.input :specie, placeholder: 'Tell us our friend specie' %>
         <%= f.input :description, placeholder: 'Tell more about our little friend and where you found then' %>
-        <%= f.input :photo, as: :file %>
+        <%= f.input :photo, as: :file, input_html: { multiple: true } %>
         <%= f.submit "Update", class: "btn btn-primary" %>
       <% end %>
     </div>
