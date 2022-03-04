@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
   def create
     @animal = Animal.find(params[:animal_id])
     @order = Order.new
+    authorize @animal
     @order.animal = @animal
     @order.user = current_user
     if @order.save
