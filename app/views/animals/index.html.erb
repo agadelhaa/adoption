@@ -1,0 +1,27 @@
+
+<div class='container'>
+ <div class="row my-2 px-5 pt-3">
+    <% @animals.each do |animal| %>
+      <div class="col-6 col-sm-3 mb-4" data-aos="zoom-in">
+        <div class="bg-white rounded-5 shadow h-100">
+
+          <% if animal.photos.attached? %>
+              <span class='animal-img'><%= cl_image_tag animal.photos.first.key, height: 220, width: 220, crop: :fill, class: 'rounded mx-auto d-block pt-3' %></span>
+          <% else %>
+              <span class='animal-img'><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPRicAScxQDveYjEAuxyD57d8ZoA1t5yhz4A&usqp=CAU" alt="", class="rounded mx-auto d-block pt-3"></span>
+          <% end %>
+
+          <div class="p-3 rounded-bottom d-flex flex-column">
+            <strong><%= animal.name %> <span class="text-muted font-weight-normal">• <%= animal.gender %> </span></strong>
+            <small class="text-muted"><%= animal.specie %></small>
+            <div class="d-flex align-items-end justify-content-between pt-4">
+              <small class="text-right flex-shrink-0"><%= link_to 'View more', animal_path(animal) %></small>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <% if policy(Animal).create? %>
+      <small class="text-right flex-shrink-0"><%= link_to 'Add new animal', new_animal_path(@animal), class: 'btn btn-success mt-3' %></small>
+    <% end %>
+  </div>

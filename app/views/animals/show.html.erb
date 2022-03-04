@@ -1,0 +1,38 @@
+<div class='container'>
+  <h2><%= @animal.name%></h2>
+<h3>
+    <% if @adopted.empty? %>
+      <%= "Not adopted" %>
+      <% else %>
+      <%= "Adopted" %>
+    <% end %>
+</h3>
+  <% if @animal.photos.attached? %>
+    <% @animal.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 150, width: 150, crop: :fill %>
+    <% end %>
+  <% end %>
+  <p class='pt-5'> <strong>Size:</strong> <%= @animal.size%> | <strong>Gender:</strong> <%= @animal.gender %></p>
+  <p> <strong>Description:</strong> <%= @animal.description %></p>
+
+  <p><strong>Where am I:</strong> <%= @animal.address %></p>
+  <p><strong>Contact:</strong> <%= @animal.user.email %></p>
+
+<ul>
+  <% @animal.orders.each do |order| %>
+  <li> Someone is interested in adopting this pet, send an email to <%= order.user.email %>
+  <% end %>
+</ul>
+
+  <%= link_to 'Back', animals_path, class: 'btn btn-success mt-3' %>
+  <% if policy(@animal).edit? %>
+    <%= link_to 'Edit', edit_animal_path(@animal), class: 'btn btn-success mt-3' %>
+  <% end %>
+
+  <% if @adopted == false || current_user != @animal.user %>
+    <%= link_to 'I`m interested', animal_orders_path(@animal), method: :post, class: 'btn btn-success mt-3' %>
+  <% end %>
+  <% if policy(@animal).edit? %>
+    <%= link_to 'Delete', animal_path(@animal), method: :delete, data: { confirm: "Are you sure you want to remove #{@animal.name} from adoption list"}, class: 'btn btn-danger mt-3' %>
+  <% end %>
+</div>
