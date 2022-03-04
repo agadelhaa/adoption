@@ -18,12 +18,13 @@
   <p><strong>Where am I:</strong> <%= @animal.address %></p>
   <p><strong>Contact:</strong> <%= @animal.user.email %></p>
 
-<ul>
-  <% @animal.orders.each do |order| %>
-  <li> Someone is interested in adopting this pet, send an email to <%= order.user.email %>
+  <% if current_user == @animal.user %>
+    <ul>
+      <% @animal.orders.each do |order| %>
+      <li> Someone is interested in adopting <%= @animal.name %>, send an email to <%= order.user.email %>
+      <% end %>
+    </ul>
   <% end %>
-</ul>
-
   <%= link_to 'Back', animals_path, class: 'btn btn-success mt-3' %>
   <% if policy(@animal).edit? %>
     <%= link_to 'Edit', edit_animal_path(@animal), class: 'btn btn-success mt-3' %>

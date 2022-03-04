@@ -10,7 +10,6 @@ class AnimalsController < ApplicationController
   end
 
   def create
-
     @animal = Animal.new(animal_params)
     authorize @animal
     @animal.user = current_user
