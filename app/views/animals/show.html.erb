@@ -8,6 +8,12 @@
 <p> <strong>Size:</strong> <%= @animal.size%> | <strong>Gender:</strong> <%= @animal.gender %></p>
 <p> <strong>Description:</strong> <%= @animal.description %></p>
 
+<ul>
+  <% @animal.orders.each do |order| %>
+  <li> Someone is interested in adopting this pet, send an email to <%= order.user %>
+  <% end %>
+</ul>
+
 
 <p>If interested, send me a email: <%= @animal.user.email %></p>
 <%= link_to 'Back', root_path, class: 'btn btn-success mt-3' %>
