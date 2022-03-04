@@ -20,7 +20,7 @@
 
 <ul>
   <% @animal.orders.each do |order| %>
-  <li> Someone is interested in adopting this pet, send an email to <%= order.user %>
+  <li> Someone is interested in adopting this pet, send an email to <%= order.user.email %>
   <% end %>
 </ul>
 
