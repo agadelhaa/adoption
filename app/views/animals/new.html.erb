@@ -12,7 +12,7 @@
         <%= f.input :age, collection: 0..30, default: 0 %>
         <%= f.input :size,  collection: ['Small', 'Medium', 'Large', 'X-large'], default: 'Small' %>
         <%= f.input :specie, collection: ['Dog', 'Cat', 'Bird', 'Turtle', 'Fish', 'Other'], default: 'Dog' %>
-        <%= f.input :address, placeholder: 'Tell us where you found our friend / Street, City' %>
+        <%= f.input :address, placeholder: 'Tell us where you found our friend / City/State and Country' %>
         <%= f.input :description, placeholder: 'Tell more about our little / If other specie specifie here' %>
         <%= f.input :photos, as: :file, input_html: { multiple: true }%>
         <%= f.submit "Create", class: "btn btn-primary" %>
