@@ -3,3 +3,13 @@
   height: 200px;
 
 }
+
+.img-carousel {
+  display: block;
+        height: 500px;
+        max-width: 100%;
+        line-height: 1;
+        margin:auto;
+        width: 100%; // Add this
+        border-radius: 20px;
+}
