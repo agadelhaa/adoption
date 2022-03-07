@@ -1,8 +1,18 @@
 
 <div class='container'>
+<h1 class='pt-3 text-center'>Find Yourself a new Friend</h1>
  <div class="row my-2 px-5 pt-3">
+    <%= form_tag animals_path, method: :get do %>
+      <%= label :location, "Search animals near to: " %>
+      <%= text_field_tag :address, params[:address], placeholder: "Street / City / Country" %>
+
+      <%= label :distance, "Distance (Km) : " %>
+      <%= text_field_tag :distance, params[:distance], type: "number" %>
+
+      <%= submit_tag "Search" %>
+    <% end %>
     <% @animals.each do |animal| %>
-      <div class="col-6 col-sm-3 mb-4" data-aos="zoom-in">
+      <div class="col-6 col-sm-3 mb-4 pt-5" data-aos="zoom-in">
         <div class="bg-white rounded-5 shadow h-100">
 
           <% if animal.photos.attached? %>
