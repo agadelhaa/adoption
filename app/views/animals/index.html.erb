@@ -1,27 +1,45 @@
 
 <div class='container'>
- <div class="row my-2 px-5 pt-3">
-    <% @animals.each do |animal| %>
-      <div class="col-6 col-sm-3 mb-4" data-aos="zoom-in">
-        <div class="bg-white rounded-5 shadow h-100">
+  <h1 class='pt-3 text-center'>Find Yourself a new Friend</h1>
+    <div class="row g-3 align-items-center">
+      <%= form_tag animals_path, method: :get, class: 'form-inline text-center' do %>
+        <div class="col-auto">
+         <%= label :location, "Search animals near to: ", class: 'pb-3' %>
+         <%= text_field_tag :address, params[:address], placeholder: "City / State / Country", class: 'form-control text-center' %>
+        </div>
+        <div class="col-auto">
+          <% label :distance, "Distance (Km) : " %>
+          <% text_field_tag :distance, params[:distance], type: "number", default: 50 %>
+        </div>
+        <div class="col-auto pt-3">
+          <%= submit_tag "Search", class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  <div class="row my-2 px-5 pt-3">
+      <% @animals.each do |animal| %>
+        <div class="col-6 col-sm-3 mb-4 pt-5" data-aos="zoom-in">
+          <div class="bg-white rounded-5 shadow h-100">
 
-          <% if animal.photos.attached? %>
-              <span class='animal-img'><%= cl_image_tag animal.photos.first.key, height: 220, width: 220, crop: :fill, class: 'rounded mx-auto d-block pt-3' %></span>
-          <% else %>
-              <span class='animal-img'><%= image_tag "dog_card.jpg", class: "rounded mx-auto d-block pt-3" %></span>
-          <% end %>
+            <% if animal.photos.attached? %>
+                <span class='animal-img'><%= cl_image_tag animal.photos.first.key, height: 220, width: 220, crop: :fill, class: 'rounded mx-auto d-block pt-3' %></span>
+            <% else %>
+                <span class='animal-img'><%= image_tag "dog_card.jpg", class: "rounded mx-auto d-block pt-3" %></span>
+            <% end %>
 
-          <div class="p-3 rounded-bottom d-flex flex-column">
-            <strong><%= animal.name %> <span class="text-muted font-weight-normal">• <%= animal.gender %> </span></strong>
-            <small class="text-muted"><%= animal.specie %></small>
-            <div class="d-flex align-items-end justify-content-between pt-4">
-              <small class="text-right flex-shrink-0"><%= link_to 'View more', animal_path(animal) %></small>
+            <div class="p-3 rounded-bottom d-flex flex-column">
+              <strong><%= animal.name %> <span class="text-muted font-weight-normal">• <%= animal.gender %> </span></strong>
+              <small class="text-muted"><%= animal.specie %></small>
+              <div class="d-flex align-items-end justify-content-between pt-4">
+                <small class="text-right flex-shrink-0"><%= link_to 'View more', animal_path(animal) %></small>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
-    <% if policy(Animal).create? %>
-      <small class="text-right flex-shrink-0"><%= link_to 'Add new animal', new_animal_path(@animal), class: 'btn btn-success mt-3' %></small>
-    <% end %>
+      <% end %>
+      <% if policy(Animal).create? %>
+        <small class="text-right flex-shrink-0"><%= link_to 'Add new animal', new_animal_path(@animal), class: 'btn btn-success mt-3' %></small>
+      <% end %>
+      <small class="text-right flex-shrink-0"><%= link_to 'Back', animals_path, class: 'btn btn-success mt-3' %></small>
   </div>
+</div>

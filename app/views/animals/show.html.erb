@@ -1,16 +1,24 @@
 <div class='container pt-5'>
   <h2><%= @animal.name%></h2>
-<h3>
-    <% if @adopted.empty? %>
-      <%= "Not adopted" %>
+  <h3>
+      <% if @adopted.empty? %>
+        <%= "Not adopted" %>
       <% else %>
-      <%= "Adopted" %>
-    <% end %>
-</h3>
+        <%= "Adopted" %>
+      <% end %>
+  </h3>
   <% if @animal.photos.attached? %>
-    <% @animal.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 150, width: 150, crop: :fill %>
-    <% end %>
+
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <% @animal.photos.each do |photo| %>
+              <%= cl_image_tag photo.key, height: 150, width: 150, crop: :fill, class: 'd-block w-100'  %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
   <% end %>
   <p class='pt-5'> <strong>Size:</strong> <%= @animal.size%> | <strong>Gender:</strong> <%= @animal.gender %></p>
   <p> <strong>Description:</strong> <%= @animal.description %></p>

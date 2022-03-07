@@ -2,7 +2,11 @@ class AnimalsController < ApplicationController
   skip_after_action :verify_authorized, except: [:home]
   def index
     @animals = policy_scope(Animal).order(created_at: :desc)
-    @animals = Animal.all
+    if params[:address].present?
+      @animals = Animal.near(params[:address], params[:distance] || 10, order: :distance)
+    else
+      @animals = Animal.all
+    end
   end
 
   def new
