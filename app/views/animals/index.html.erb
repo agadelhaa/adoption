@@ -2,18 +2,22 @@
 <div class='container'>
   <h1 class='pt-3 text-center'>Find Yourself a new Friend</h1>
     <div class="search-bar d-flex justify-content-center">
-      <div class="form-search">
-        <%= form_tag animals_path, method: :get, class: 'form-inline text-center' do %>
+      <div class="w-75 d-flex justify-content-center">
+        <%= form_tag animals_path, method: :get, class: 'form-inline text-center d-flex form-search' do %>
+          <div>
+            <%= label :location, "Search animals near to: ", class: 'search-label' %>
+          </div>
+          <div>
+            <%= text_field_tag :address, params[:address], placeholder: "City / State / Country", class: 'form-control text-center' %>
+          </div>
 
-          <%= label :location, "Search animals near to: ", class: 'pb-3' %>
-          <%= text_field_tag :address, params[:address], placeholder: "City / State / Country", class: 'form-control text-center' %>
-
-
+          <div>
             <% label :distance, "Distance (Km) : " %>
-            <% text_field_tag :distance, params[:distance], type: "number", default: 50 %>
+            <% text_field_tag :distance, params[:distance], type: "number", default: 150 %>
+          </div>
 
           <div class="search-button">
-            <%= submit_tag "Search", class: 'btn btn-primary' %>
+            <%= submit_tag "Search", class: 'btn btn-primary search-btn' %>
           </div>
         <% end %>
       </div>
