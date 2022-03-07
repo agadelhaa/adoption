@@ -18,19 +18,30 @@ class OrdersController < ApplicationController
   end
 
   def edit
-    @animal = Animal.find(params[:animal_id])
+    # @animal = Animal.find(params[:animal_id])
     @order = Order.find(params[:id])
+    authorize @order
   end
 
   def update
-    @animal = Animal.find(params[:animal_id])
+    # @animal = Animal.find(params[:animal_id])
     @order = Order.find(params[:id])
+    authorize @order
     @order.update(order_params)
     if @order.save
       redirect_to animal_path(@order.animal)
     else
       render :edit
     end
+  end
+
+  def destroy
+    # @animal = Animal.find(params[:animal_id])
+    @order = Order.find(params[:id])
+    authorize @order
+    @animal = @order.animal
+    @order.destroy
+    redirect_to animal_path(@animal)
   end
 
   private
