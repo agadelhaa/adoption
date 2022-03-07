@@ -1,5 +1,4 @@
-<%= simple_form_for [ @animal, @order ] do |f| %>
-  <%= f.label :adopted %>
-  <%= f.check_box :adopted %>
-  <%= f.submit %>
+<%= simple_form_for [ @order ] do |f| %>
+  <%= f.input :adopted, as: :boolean, checked_value: true, unchecked_value: false %>
+  <%= f.button :submit %>
 <% end %>

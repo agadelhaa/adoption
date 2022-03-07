@@ -27,7 +27,9 @@ class AnimalsController < ApplicationController
 
   def show
     @animal = Animal.find(params[:id])
+    @orders = @animal.orders
     @adopted = @animal.orders.select { |animal| animal.adopted }
+    # @adopted = Order.where(adopted: true).pluck(:adopted)
   end
 
   def edit
@@ -35,6 +37,7 @@ class AnimalsController < ApplicationController
   end
 
   def update
+    # record.user == user
     @animal = Animal.find(params[:id])
     @animal.update(animal_params)
     if @animal.save
