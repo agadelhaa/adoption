@@ -1,7 +1,8 @@
 class AnimalsController < ApplicationController
+  skip_after_action :verify_authorized, except: [:home]
   def index
+    @animals = policy_scope(Animal).order(created_at: :desc)
     @animals = Animal.all
-
   end
 
   def new
@@ -9,8 +10,8 @@ class AnimalsController < ApplicationController
   end
 
   def create
-
     @animal = Animal.new(animal_params)
+    authorize @animal
     @animal.user = current_user
 
     if @animal.save
@@ -49,6 +50,6 @@ class AnimalsController < ApplicationController
   private
 
   def animal_params
-    params.require(:animal).permit(:name, :gender, :age, :size, :specie, :description, photos: [])
+    params.require(:animal).permit(:name, :gender, :age, :size, :specie, :description, :address, photos: [])
   end
 end

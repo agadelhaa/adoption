@@ -8,7 +8,7 @@
           <% if animal.photos.attached? %>
               <span class='animal-img'><%= cl_image_tag animal.photos.first.key, height: 220, width: 220, crop: :fill, class: 'rounded mx-auto d-block pt-3' %></span>
           <% else %>
-              <span class='animal-img'><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPRicAScxQDveYjEAuxyD57d8ZoA1t5yhz4A&usqp=CAU" alt="", class="rounded mx-auto d-block pt-3"></span>
+              <span class='animal-img'><%= image_tag "dog_card.jpg", class: "rounded mx-auto d-block pt-3" %></span>
           <% end %>
 
           <div class="p-3 rounded-bottom d-flex flex-column">
@@ -21,5 +21,7 @@
         </div>
       </div>
     <% end %>
-    <small class="text-right flex-shrink-0"><%= link_to 'Add new animal', new_animal_path(@animal), class: 'btn btn-success mt-3' %></small>
+    <% if policy(Animal).create? %>
+      <small class="text-right flex-shrink-0"><%= link_to 'Add new animal', new_animal_path(@animal), class: 'btn btn-success mt-3' %></small>
+    <% end %>
   </div>
