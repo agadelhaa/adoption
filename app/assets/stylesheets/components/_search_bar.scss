@@ -2,15 +2,26 @@
   margin-top: 40px;
 }
 .form-search {
- gap: 10px;
+
  align-items: center;
 }
 
 .search-label {
-  padding: 0;
+  padding-right: 5px;
+  font-family: 'Pompiere';
+  font-size: 30px;
+  align-content: center;
 }
 
 .search-btn {
-  padding-top: 0;
-  padding-bottom: 0;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  border-radius: 0 25px 25px 0 !important;
+  height: 26px !important;
+}
+
+.search-location {
+  padding: 0;
+  margin-right: 0;
+  font-family: 'Pompiere';
 }

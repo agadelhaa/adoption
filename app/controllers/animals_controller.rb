@@ -4,6 +4,7 @@ class AnimalsController < ApplicationController
     @animals = policy_scope(Animal).order(created_at: :desc)
     if params[:address].present?
       @animals = Animal.near(params[:address], params[:distance] || 10, order: :distance)
+      @show_back_button = true
     else
       @animals = Animal.all
     end

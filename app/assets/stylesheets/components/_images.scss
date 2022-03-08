@@ -1,7 +1,12 @@
 .animal-img {
-  width: 200px;
-  height: 200px;
+  width: 100%;
+  
 
+}
+
+.cl-animal-image {
+  width: 100%;
+  background-size: cover;
 }
 
 .img-carousel {
@@ -10,6 +15,6 @@
         max-width: 100%;
         line-height: 1;
         margin:auto;
-    
+
         border-radius: 20px;
 }
