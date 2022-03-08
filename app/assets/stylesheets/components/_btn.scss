@@ -2,6 +2,34 @@
   width: 117px !important;
   padding: 8px !important;
   font-size: 12px !important;
-  border-radius: 5px !important;
+  border-radius: 2px !important;
   height: 35px !important;
+  background-color: transparent !important;
+  border-color: #0d6efd !important;
+  color: #0d6efd !important;
+  font-weight: normal !important;
+}
+
+.btn-update:hover {
+  background-color: #0d6efd !important;
+  color: white !important;
+
+}
+
+.btn-create {
+  width: 65px !important;
+  padding: 8px !important;
+  font-size: 14px !important;
+  border-radius: 2px !important;
+  height: 40px !important;
+  background-color: transparent !important;
+  border-color: #0d6efd !important;
+  color: #0d6efd !important;
+  font-weight: normal !important;
+}
+
+.btn-create:hover {
+  background-color: #0d6efd !important;
+  color: white !important;
+
 }

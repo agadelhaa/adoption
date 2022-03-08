@@ -65,8 +65,8 @@ form .txt_field{
 }
 .txt_field input{
   width: 100%;
-  padding: 0 5px;
-  height: 40px;
+  padding: 0;
+  height: 30px;
   font-size: 16px;
   border: none;
   background: none;
@@ -120,6 +120,8 @@ input[type="submit"]{
   font-weight: 700;
   cursor: pointer;
   outline: none;
+  align-items: center;
+
 }
 input[type="submit"]:hover{
   border-color: #2691d9;

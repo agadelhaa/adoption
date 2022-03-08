@@ -1,14 +1,14 @@
 
 <div class='container'>
-  <h1 class='pt-3 text-center'>Find Yourself a new Friend</h1>
+  <h1 class='pt-3 text-center'>Choose a new Friend</h1>
     <div class="search-bar d-flex justify-content-center">
       <div class="w-75 d-flex justify-content-center">
         <%= form_tag animals_path, method: :get, class: 'form-inline text-center d-flex form-search' do %>
           <div>
-            <%= label :location, "Search animals near to: ", class: 'search-label' %>
+            <%= label :location, "Find animals near to you: ", class: 'search-label' %>
           </div>
           <div>
-            <%= text_field_tag :address, params[:address], placeholder: "City / State / Country", class: 'form-control text-center' %>
+            <%= text_field_tag :address, params[:address], placeholder: "City / State / Country", class: 'form-control text-center search-location' %>
           </div>
 
           <div>
@@ -17,38 +17,41 @@
           </div>
 
           <div class="search-button">
-            <%= submit_tag "Search", class: 'btn btn-primary search-btn' %>
+            <%= submit_tag 'Search', class: 'btn btn-primary search-btn' %>
           </div>
         <% end %>
       </div>
       <% if policy(Animal).create? %>
         <small class="text-right flex-shrink-0"><%= link_to new_animal_path(@animal), class: "btn btn-outline-primary mt-3" do %>
-        <i class="fas fa-paw"> Add a new pet </i>
+        <i class="fas fa-paw me-2"></i>Add new animal
         <% end %>
         </small>
       <% end %>
     </div>
-  <div class="row my-2 px-5 pt-3">
+  <div class="row my-2 px-5">
       <% @animals.each do |animal| %>
         <div class="col-6 col-sm-3 mb-4 pt-5" data-aos="zoom-in">
-          <div class="bg-white rounded-5 shadow h-100">
+          <div class="bg-white rounded-5 shadow h-100 d-flex flex-column justify-content-between card-animal">
 
             <% if animal.photos.attached? %>
-                <span class='animal-img'><%= cl_image_tag animal.photos.first.key, height: 220, width: 220, crop: :fill, class: 'rounded mx-auto d-block pt-3' %></span>
+                <span class='animal-img'><%= cl_image_tag animal.photos.first.key, crop: :fill, class: 'rounded mx-auto d-block pt-3 cl-animal-image' %></span>
             <% else %>
-                <span class='animal-img'><%= image_tag "dog_card.jpg", class: "rounded mx-auto d-block pt-3" %></span>
+                <span class='animal-img'><%= image_tag "dog_card.jpg", class: "rounded mx-auto d-block pt-3 cl-animal-image" %></span>
             <% end %>
 
             <div class="p-3 rounded-bottom d-flex flex-column">
-              <strong><%= animal.name %> <span class="text-muted font-weight-normal">• <%= animal.gender %> </span></strong>
-              <small class="text-muted"><%= animal.specie %></small>
-              <div class="d-flex align-items-end justify-content-between pt-4">
-                <small class="text-right flex-shrink-0 "><%= link_to 'View more', animal_path(animal), class: "btn btn-outline-primary " %></small>
+              <strong><%= animal.name %> <span class="font-weight-normal">• <%= animal.gender %> </span></strong>
+              <small><%= animal.specie %></small>
+              <div class="pt-4">
+                <small class="text-right flex-shrink-0"><%= link_to 'View more', animal_path(animal), class: "btn btn-outline-primary " %></small>
               </div>
             </div>
           </div>
         </div>
       <% end %>
-     <small class="text-right flex-shrink-0"><%= link_to 'Back', animals_path, class: 'btn btn-success mt-3' %></ small>
+      <% if @show_back_button %>
+        <small class="text-right flex-shrink-0"><%= link_to 'Back', animals_path, class: 'btn btn-outline-primary mt-3'  %></small>
+      <% end %>
   </div>
+
 </div>

@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
     @order.animal = @animal
     @order.user = current_user
     if @order.save
-      redirect_to animal_path(@animal), notice: 'order was successfully created, check your email for contact.'
+      redirect_to animal_path(@animal), alert: 'order was successfully created, check your email for contact.'
     else
       render 'animal/show'
     end

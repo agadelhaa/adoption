@@ -26,8 +26,6 @@ class ApplicationController < ActionController::Base
     animals_path
   end
 
-
-
   private
 
   def skip_pundit?
