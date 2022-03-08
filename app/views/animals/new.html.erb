@@ -15,9 +15,9 @@
         <%= f.input :address, placeholder: 'Tell us where you found our friend / City/State and Country' %>
         <%= f.input :description, placeholder: 'Tell more about our little / If other specie specifie here' %>
         <%= f.input :photos, as: :file, input_html: { multiple: true }%>
-        <%= f.submit "Create", class: "btn btn-primary" %>
+        <%= f.submit "Create", class: "w-25 btn-create" %>
       <% end %>
     </div>
   </div>
-  <%= link_to 'Back', animals_path, class: 'btn btn-success mt-3' %>
+  <%= link_to 'Back', animals_path, class: 'btn btn-outline-primary mt-3' %>
 </div>

@@ -23,7 +23,7 @@
       </div>
       <% if policy(Animal).create? %>
         <small class="text-right flex-shrink-0"><%= link_to new_animal_path(@animal), class: "btn btn-outline-primary mt-3" do %>
-        <i class="fas fa-paw"> Add a new pet </i>
+        <i class="fas fa-paw me-2"></i>Add new animal
         <% end %>
         </small>
       <% end %>
@@ -49,11 +49,8 @@
           </div>
         </div>
       <% end %>
-      <% if policy(Animal).create? %>
-        <small class="text-right flex-shrink-0"><%= link_to 'Add new animal', new_animal_path(@animal), class: 'btn btn-success mt-3' %></small>
-      <% end %>
       <% if @show_back_button %>
-        <small class="text-right flex-shrink-0"><%= link_to 'Back', animals_path, class: 'btn btn-success mt-3'  %></small>
+        <small class="text-right flex-shrink-0"><%= link_to 'Back', animals_path, class: 'btn btn-outline-primary mt-3'  %></small>
       <% end %>
   </div>
 

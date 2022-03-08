@@ -68,7 +68,7 @@
 
   <% if @adopted == false || current_user != @animal.user %>
     <%= link_to animal_orders_path(@animal), method: :post, class: "btn btn-outline-primary mt-3" do %>
-      <i class="fas fa-heart"> I`m interested </i>
+      <i class="fas fa-heart me-2"></i> I`m interested
     <% end %>
   <% end %>
   <% if policy(@animal).edit? %>
