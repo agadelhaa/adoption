@@ -1,13 +1,13 @@
 <div class='container pt-5'>
   <% if @animal.photos.attached? %>
 
-      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner">
 
             <% @animal.photos.each_with_index do |photo, i| %>
 
               <div class="carousel-item <%= i.zero? ? "active" : ""  %>" >
-                <%= cl_image_tag photo.key, crop: :fill, class: 'img-carousel'  %>
+                <%= cl_image_tag photo.key, class: 'img-carousel'  %>
                 <div class="carousel-caption">
                   <h1><%= @animal.name%></h1>
                   <h2><% if @adopted.empty? %>
