@@ -21,6 +21,12 @@
           </div>
         <% end %>
       </div>
+      <% if policy(Animal).create? %>
+        <small class="text-right flex-shrink-0"><%= link_to new_animal_path(@animal), class: "btn btn-outline-primary mt-3" do %>
+        <i class="fas fa-paw"> Add a new pet </i>
+        <% end %>
+        </small>
+      <% end %>
     </div>
   <div class="row my-2 px-5 pt-3">
       <% @animals.each do |animal| %>
@@ -37,15 +43,12 @@
               <strong><%= animal.name %> <span class="text-muted font-weight-normal">• <%= animal.gender %> </span></strong>
               <small class="text-muted"><%= animal.specie %></small>
               <div class="d-flex align-items-end justify-content-between pt-4">
-                <small class="text-right flex-shrink-0"><%= link_to 'View more', animal_path(animal) %></small>
+                <small class="text-right flex-shrink-0 "><%= link_to 'View more', animal_path(animal), class: "btn btn-outline-primary " %></small>
               </div>
             </div>
           </div>
         </div>
       <% end %>
-      <% if policy(Animal).create? %>
-        <small class="text-right flex-shrink-0"><%= link_to 'Add new animal', new_animal_path(@animal), class: 'btn btn-success mt-3' %></small>
-      <% end %>
-      <small class="text-right flex-shrink-0"><%= link_to 'Back', animals_path, class: 'btn btn-success mt-3' %></small>
+     <small class="text-right flex-shrink-0"><%= link_to 'Back', animals_path, class: 'btn btn-success mt-3' %></ small>
   </div>
 </div>
