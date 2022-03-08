@@ -21,7 +21,12 @@
           </div>
         <% end %>
       </div>
-      <hr>
+      <% if policy(Animal).create? %>
+        <small class="text-right flex-shrink-0"><%= link_to new_animal_path(@animal), class: "btn btn-outline-primary mt-3" do %>
+        <i class="fas fa-paw"> Add a new pet </i>
+        <% end %>
+        </small>
+      <% end %>
     </div>
   <div class="row my-2 px-5">
       <% @animals.each do |animal| %>
@@ -38,7 +43,7 @@
               <strong><%= animal.name %> <span class="font-weight-normal">• <%= animal.gender %> </span></strong>
               <small><%= animal.specie %></small>
               <div class="pt-4">
-                <small class="text-right flex-shrink-0"><%= link_to 'View more', animal_path(animal) %></small>
+                <small class="text-right flex-shrink-0"><%= link_to 'View more', animal_path(animal), class: "btn btn-outline-primary " %></small>
               </div>
             </div>
           </div>
