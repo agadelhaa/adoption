@@ -32,11 +32,11 @@
 
 <div class='container pt-3'>
   <hr>
-  <p class='pt-5'> <strong>Size:</strong> <%= @animal.size%> | <strong>Gender:</strong> <%= @animal.gender %></p>
-  <p> <strong>Description:</strong> <%= @animal.description %></p>
+  <p class='pt-5 font'> <strong>Size:</strong> <%= @animal.size%> | <strong>Gender:</strong> <%= @animal.gender %></p>
+  <p class='font'> <strong>Description:</strong> <%= @animal.description %></p>
 
-  <p><strong>Where am I:</strong> <%= @animal.address %></p>
-  <p><strong>Contact:</strong> <%= @animal.user.email %></p>
+  <p class='font'><strong>Where am I:</strong> <%= @animal.address %></p>
+  <p class='font'><strong>Contact:</strong> <%= @animal.user.email %></p>
   <hr>
 
   <% if current_user == @animal.user %>
@@ -45,28 +45,34 @@
         <p> Someone is interested in adopting <%= @animal.name %>, send an email to <%= order.user.email %> </p>
         <%= simple_form_for [ order ], remote: true do |f| %>
           <%= f.input :adopted, as: :boolean, checked_value: true, unchecked_value: false %>
-          <%= f.submit class: "w-25 btn-update" %>
+          <%= f.submit class: "w-25 btn-update animal" %>
         <% end %>
         <%= link_to "Remove order",
                   destroy_path(order),
                   method: :delete,
                   data: { confirm: "Are you sure?"},
-                  class: "btn btn-outline-danger btn-sm mt-2 mb-3"  %>
+                  class: "btn btn-outline-danger btn-sm mt-2 mb-3 animal-erase"  %>
         <hr>
       <% end %>
     </div>
   <% end %>
-  <%= link_to 'Back', :back, class: "btn btn-outline-primary mt-3 " %>
+  <%= link_to animals_path, class: "btn btn-outline-primary mt-3 animal" do %>
+    <i class="fas fa-undo"></i> Back
+  <% end %>
   <% if policy(@animal).edit? %>
-    <%= link_to 'Edit', edit_animal_path(@animal), class: "btn btn-outline-primary mt-3" %>
+    <%= link_to edit_animal_path(@animal), class: "btn btn-outline-primary mt-3 animal" do %>
+      <i class="fas fa-pen"></i> Edit
+    <% end %>
   <% end %>
 
   <% if @adopted == false || current_user != @animal.user %>
-    <%= link_to animal_orders_path(@animal), method: :post, class: "btn btn-outline-primary mt-3" do %>
+    <%= link_to animal_orders_path(@animal), method: :post, class: "btn btn-outline-primary mt-3 animal-love" do %>
       <i class="fas fa-heart me-2"></i> I`m interested
     <% end %>
   <% end %>
   <% if policy(@animal).edit? %>
-    <%= link_to 'Delete', animal_path(@animal), method: :delete, data: { confirm: "Are you sure you want to remove #{@animal.name} from adoption list"}, class: "btn btn-outline-danger mt-3" %>
+    <%= link_to animal_path(@animal), method: :delete, data: { confirm: "Are you sure you want to remove #{@animal.name} from adoption list"}, class: "btn btn-outline-danger mt-3 animal-erase" do %>
+      <i class="fas fa-trash"></i> Delete
+    <% end %>
   <% end %>
 </div>

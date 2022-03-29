@@ -1,33 +1,37 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "catanddog-logo.gif", class: 'd-none' %>
-    <% end %>
+  <ul class="navbar-nav me-auto text-center">
+    <% if user_signed_in? %>
+      <li>
+        <%= form_tag animals_path, method: :get, class: 'form-inline text-center d-flex form-search' do %>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+          <div>
+            <%= text_field_tag :address, params[:address], placeholder: "Find near you", class: 'form-control text-center search-location' %>
+          </div>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item active">
-           <%= link_to "Dog out", destroy_user_session_path, method: :delete, class: "nav-link" %>
-          </li>
-          <li class="nav-item dropdown">
-            <% if current_user.photo.attached?%>
-              <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% else %>
-              <%= image_tag "avatar_dog.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false%>
-            <% end %>
-          </li>
-        <% else %>
-          <%= link_to "#", class: "navbar-brand" do %>
-            <%= image_tag "catanddog-logo.gif" %>
-          <% end %>
+          <div>
+            <% label :distance, "Distance (Km) : " %>
+            <% text_field_tag :distance, params[:distance], type: "number", default: 150 %>
+          </div>
+
+          <div class="search-button">
+            <%= submit_tag 'Search', class: 'btn btn-primary search-btn' %>
+          </div>
         <% end %>
-      </ul>
-    </div>
-    </div>
-
+      </li>
+      <li class="nav-item active">
+        <%= link_to "Dog out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <% if current_user.photo.attached?%>
+          <%= cl_image_tag current_user.photo.key, class: "avatar" %>
+        <% else %>
+          <%= image_tag "avatar_dog.jpg", class: "avatar" %>
+        <% end %>
+      </li>
+    <% else %>
+      <%= link_to "#", class: "navbar-brand" do %>
+        <%= image_tag "catanddog-logo.gif" %>
+      <% end %>
+    <% end %>
+  </ul>
 </div>
