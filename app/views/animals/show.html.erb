@@ -47,7 +47,7 @@
   <% if current_user == @animal.user %>
     <div>
       <% @animal.orders.each do |order| %>
-      <p> Someone is interested in adopting <%= @animal.name %>, send an email to <%= order.user.email %> </p>
+      <p> Someone is interested in adopting <%= @animal.name %>, send an email to <%= order.user.email %> to make the deal!</p>
         <%= simple_form_for [ order ], remote: true do |f| %>
           <%= f.input :adopted, as: :boolean, checked_value: true, unchecked_value: false %>
           <%= f.submit class: "w-25 btn-update" %>
