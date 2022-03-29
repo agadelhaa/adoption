@@ -2,27 +2,8 @@
 <div class='container'>
   <h1 class='pt-3 text-center'>Choose a new Friend</h1>
     <div class="search-bar d-flex justify-content-center">
-      <div class="w-75 d-flex justify-content-center">
-        <%= form_tag animals_path, method: :get, class: 'form-inline text-center d-flex form-search' do %>
-          <div>
-            <%= label :location, "Find animals near to you: ", class: 'search-label' %>
-          </div>
-          <div>
-            <%= text_field_tag :address, params[:address], placeholder: "City / State / Country", class: 'form-control text-center search-location' %>
-          </div>
-
-          <div>
-            <% label :distance, "Distance (Km) : " %>
-            <% text_field_tag :distance, params[:distance], type: "number", default: 150 %>
-          </div>
-
-          <div class="search-button">
-            <%= submit_tag 'Search', class: 'btn btn-primary search-btn' %>
-          </div>
-        <% end %>
-      </div>
       <% if policy(Animal).create? %>
-        <small class="text-right flex-shrink-0"><%= link_to new_animal_path(@animal), class: "btn btn-outline-primary mt-3" do %>
+        <small class="text-right flex-shrink-0"><%= link_to new_animal_path(@animal), class: "btn btn-outline-primary mt-3 animal" do %>
         <i class="fas fa-paw me-2"></i>Add new animal
         <% end %>
         </small>
@@ -40,17 +21,17 @@
             <% end %>
 
             <div class="p-3 rounded-bottom d-flex flex-column">
-              <strong><%= animal.name %> <span class="font-weight-normal">• <%= animal.gender %> </span></strong>
-              <small><%= animal.specie %></small>
+              <strong class='font'><%= animal.name %> <span class="font-weight-normal">• <%= animal.gender %> </span></strong>
+              <small class='font'><%= animal.specie %></small>
               <div class="pt-4">
-                <small class="text-right flex-shrink-0"><%= link_to 'View more', animal_path(animal), class: "btn btn-outline-primary " %></small>
+                <small class="text-right flex-shrink-0"><%= link_to 'View more', animal_path(animal), class: "btn btn-outline-primary animal" %></small>
               </div>
             </div>
           </div>
         </div>
       <% end %>
       <% if @show_back_button %>
-        <small class="text-right flex-shrink-0"><%= link_to 'Back', animals_path, class: 'btn btn-outline-primary mt-3'  %></small>
+        <small><%= link_to 'Back', animals_path, class: 'btn btn-outline-primary mt-3 animal'  %></small>
       <% end %>
   </div>
 

@@ -1,11 +1,11 @@
 .footer {
-  background: #F4F4F4;
+  background: rgb(73,80,87);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100px;
-  padding: 0px 100px;
-  color: rgba(0,0,0,0.3);
+  // height: 100px;
+  // padding: 0px 100px;
+  color: rgb(201,210,210);
 }
 .footer-links {
   display: flex;
@@ -26,7 +26,7 @@
 }
 
 .footer-gif{
-width: 300px;
-height: 200px;
+width: 10px;
+height: 10px;
 
 }

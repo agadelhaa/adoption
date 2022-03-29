@@ -1,6 +1,7 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500&family=Pompiere&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@300;400&display=swap');
 
 // Define fonts for body and headers
 $body-font: "Work Sans", "Helvetica", "sans-serif";
@@ -17,23 +18,41 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
 // $my-font: "Font Name";
 
 .carousel-name {
-  font-family: 'Pompiere';
+  font-family: 'Red Hat Mono' !important;
   font-weight: bolder;
   font-size: 50px;
 }
 
 .carousel-adopted {
-  font-family: 'Pompiere';
+  font-family: 'Red Hat Mono' !important;
   font-weight: bolder;
   font-size: 50px;
 }
 
 .page-name {
-  font-family: 'Pompiere';
+  font-family: 'Red Hat Mono' !important;
+}
+
+p {
+  font-family: 'Red Hat Mono' !important;
+  font-size: 20px;
+  color: rgb(206,212,218);
+
 }
 
 h1 {
-  font-family: 'Pompiere';
+  font-family: 'Red Hat Mono' !important;
+  color: rgb(206,211,210);
 }
 
+.fa-undo, .fa-pen, .fa-trash {
+  font-size: 12px;
+}
 
+.fa-heart {
+  color: red !important;
+}
+
+.font {
+  color: rgb(206,211,210);
+}
