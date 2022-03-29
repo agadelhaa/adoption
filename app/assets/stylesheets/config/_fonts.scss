@@ -34,6 +34,13 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
 
 h1 {
   font-family: 'Pompiere';
+  color: rgb(206,211,210);
 }
 
+.fa-undo, .fa-pen, .fa-trash {
+  font-size: 12px;
+}
 
+.fa-heart {
+  color: red !important;
+}
