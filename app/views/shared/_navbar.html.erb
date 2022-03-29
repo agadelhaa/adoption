@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <ul class="navbar-nav me-auto">
+  <ul class="navbar-nav me-auto text-center">
     <% if user_signed_in? %>
-      <li class='justify-content-center'>
+      <li>
         <%= form_tag animals_path, method: :get, class: 'form-inline text-center d-flex form-search' do %>
 
           <div>

@@ -21,8 +21,8 @@
             <% end %>
 
             <div class="p-3 rounded-bottom d-flex flex-column">
-              <strong><%= animal.name %> <span class="font-weight-normal">• <%= animal.gender %> </span></strong>
-              <small><%= animal.specie %></small>
+              <strong class='font'><%= animal.name %> <span class="font-weight-normal">• <%= animal.gender %> </span></strong>
+              <small class='font'><%= animal.specie %></small>
               <div class="pt-4">
                 <small class="text-right flex-shrink-0"><%= link_to 'View more', animal_path(animal), class: "btn btn-outline-primary animal" %></small>
               </div>

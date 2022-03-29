@@ -37,11 +37,11 @@
 
 <div class='container pt-3'>
   <hr>
-  <p class='pt-5'> <strong>Size:</strong> <%= @animal.size%> | <strong>Gender:</strong> <%= @animal.gender %></p>
-  <p> <strong>Description:</strong> <%= @animal.description %></p>
+  <p class='pt-5 font'> <strong>Size:</strong> <%= @animal.size%> | <strong>Gender:</strong> <%= @animal.gender %></p>
+  <p class='font'> <strong>Description:</strong> <%= @animal.description %></p>
 
-  <p><strong>Where am I:</strong> <%= @animal.address %></p>
-  <p><strong>Contact:</strong> <%= @animal.user.email %></p>
+  <p class='font'><strong>Where am I:</strong> <%= @animal.address %></p>
+  <p class='font'><strong>Contact:</strong> <%= @animal.user.email %></p>
   <hr>
 
   <% if current_user == @animal.user %>
@@ -50,13 +50,13 @@
       <p> Someone is interested in adopting <%= @animal.name %>, send an email to <%= order.user.email %> </p>
         <%= simple_form_for [ order ], remote: true do |f| %>
           <%= f.input :adopted, as: :boolean, checked_value: true, unchecked_value: false %>
-          <%= f.submit class: "w-25 btn-update" %>
+          <%= f.submit class: "w-25 btn-update animal" %>
         <% end %>
         <%= link_to "Remove order",
                   destroy_path(order),
                   method: :delete,
                   data: { confirm: "Are you sure?"},
-                  class: "btn btn-outline-danger btn-sm mt-2 mb-3"  %>
+                  class: "btn btn-outline-danger btn-sm mt-2 mb-3 animal-erase"  %>
         <hr>
       <% end %>
     </div>
