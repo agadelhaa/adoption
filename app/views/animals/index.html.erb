@@ -1,38 +1,33 @@
-
 <div class='container'>
   <h1 class='pt-3 text-center'>Choose a new Friend</h1>
     <div class="search-bar d-flex justify-content-center">
       <% if policy(Animal).create? %>
         <small class="text-right flex-shrink-0"><%= link_to new_animal_path(@animal), class: "btn btn-outline-primary mt-3 animal" do %>
-        <i class="fas fa-paw me-2"></i>Add new animal
+          <i class="fas fa-paw me-2"></i>Add new animal
         <% end %>
         </small>
       <% end %>
     </div>
   <div class="row my-2 px-5">
-      <% @animals.each do |animal| %>
-        <div class="col-6 col-sm-3 mb-4 pt-5" data-aos="zoom-in">
-          <div class="bg-white rounded-5 shadow h-100 d-flex flex-column justify-content-between card-animal">
-
+    <% @animals.each do |animal| %>
+      <div class="col-6 col-sm-3 mb-4 pt-5" data-aos="zoom-in">
+        <div class="bg-white rounded-5 shadow h-100 d-flex flex-column justify-content-between card-animal grow">
+          <%= link_to animal_path(animal), class: "links" do %>
             <% if animal.photos.attached? %>
                 <span class='animal-img'><%= cl_image_tag animal.photos.first.key, crop: :fill, class: 'rounded mx-auto d-block pt-3 cl-animal-image' %></span>
             <% else %>
                 <span class='animal-img'><%= image_tag "dog_card.jpg", class: "rounded mx-auto d-block pt-3 cl-animal-image" %></span>
             <% end %>
-
             <div class="p-3 rounded-bottom d-flex flex-column">
               <strong class='font'><%= animal.name %> <span class="font-weight-normal">• <%= animal.gender %> </span></strong>
               <small class='font'><%= animal.specie %></small>
-              <div class="pt-4">
-                <small class="text-right flex-shrink-0"><%= link_to 'View more', animal_path(animal), class: "btn btn-outline-primary animal" %></small>
-              </div>
             </div>
-          </div>
+          <% end %>
         </div>
-      <% end %>
-      <% if @show_back_button %>
-        <small><%= link_to 'Back', animals_path, class: 'btn btn-outline-primary mt-3 animal'  %></small>
-      <% end %>
+      </div>
+    <% end %>
+    <% if @show_back_button %>
+      <small><%= link_to 'Back', animals_path, class: 'btn btn-outline-primary mt-3 animal'  %></small>
+    <% end %>
   </div>
-
 </div>

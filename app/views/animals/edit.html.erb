@@ -6,16 +6,20 @@
     <div class="col-12">
       <%= simple_form_for(@animal) do |f| %>
         <%= f.input :name, placeholder: 'Add the little friend name' %>
-        <%= f.input :gender, placeholder: 'Add a gender' %>
-        <%= f.input :age, placeholder: 'Tell us a approximate age of our friend' %>
-        <%= f.input :size, placeholder: 'Tell us a approximate size' %>
-        <%= f.input :specie, placeholder: 'Tell us our friend specie' %>
+        <div class='grid-form'>
+          <%= f.input :gender, placeholder: 'Add a gender' %>
+          <%= f.input :age, collection: 0..30, default: 0 %>
+        </div>
+        <div  class='grid-form'>
+          <%= f.input :size, collection: ['Small', 'Medium', 'Large', 'X-large'], default: 'Small' %>
+          <%= f.input :specie, collection: ['Dog', 'Cat', 'Bird', 'Turtle', 'Fish', 'Other'], default: 'Dog' %>
+        </div>
         <%= f.input :address, placeholder: 'Tell us where you found our friend' %>
         <%= f.input :description, placeholder: 'Tell more about our little friend and where you found then' %>
         <%= f.input :photos, as: :file, input_html: { multiple: true }%>
-        <%= f.submit "Update", class: "btn btn-primary" %>
+        <%= f.submit "Update", class: "btn btn-outline-primary animal p-0" %>
       <% end %>
     </div>
   </div>
-  <%= link_to 'Back', animals_path, class: 'btn btn-success mt-3' %>
+  <%= link_to 'Back', animals_path, class: 'btn btn-outline-primary animal mt-3' %>
 </div>
