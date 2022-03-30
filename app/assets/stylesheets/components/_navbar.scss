@@ -1,5 +1,5 @@
 .navbar-lewagon {
-  justify-content: space-between;
+  // justify-content: space-between;
   background: rgb(22,27,34);
 }
 
@@ -13,12 +13,14 @@
 
 .nav-link {
   color: rgb(35,134,54) !important;
+  padding-top: 17px !important;
 }
 
 .nav-link:hover {
   color: red !important;
 }
 
-.navbar-expand-sm .navbar-nav .nav-link {
-  padding-left: 83.5rem !important;
-}
+// .log-icon {
+//   padding-left: 83.5rem !important;
+//   padding-top: 16px !important;
+// }
