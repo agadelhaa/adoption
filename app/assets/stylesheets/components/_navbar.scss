@@ -12,9 +12,13 @@
 }
 
 .nav-link {
-  color: rgb(201,210,210) !important;
+  color: rgb(35,134,54) !important;
 }
 
 .nav-link:hover {
   color: red !important;
+}
+
+.navbar-expand-sm .navbar-nav .nav-link {
+  padding-left: 83.5rem !important;
 }
