@@ -11,7 +11,7 @@
 }
 
 .btn-update:hover {
-  background-color: #0d6efd !important;
+  background-color: rgb(88,166,255) !important;
   color: white !important;
 
 }
@@ -29,9 +29,9 @@
 }
 
 .btn-create:hover {
-  background-color: rgb(206,212,218) !important;
-  color: rgb(52,58,64) !important;
-  border-color: rgb(52,58,64)  !important;
+  background-color: transparent!important;
+  color: rgb(88,166,255) !important;
+  border-color: rgb(88,166,255)  !important;
 }
 
  .animal {
@@ -46,8 +46,8 @@
 
  .animal:hover {
   background-color: transparent !important;
-  border-color: rgb(67,97,238) !important;
-  color: rgb(67,97,238) !important;
+  border-color: rgb(88,166,255) !important;
+  color: rgb(88,166,255) !important;
  }
 
  .animal-erase {
@@ -79,3 +79,11 @@
   border-color: red !important;
   color: red !important;
  }
+
+ .links {
+   text-decoration: none;
+ }
+
+.log-icon {
+  padding-right: 10px;
+}
