@@ -5,16 +5,18 @@
   <div class="row">
     <div class="col-12">
       <%= simple_form_for(@animal) do |f| %>
-        <%= f.input :name, placeholder: 'Add the little friend name' %>
         <div class='grid-form'>
-          <%= f.input :gender, placeholder: 'Add a gender' %>
-          <%= f.input :age, collection: 0..30, default: 0 %>
+          <%= f.input :name, placeholder: "Add our little friend's name" %>
+          <%= f.input :gender, collection: ['Male', 'Female'], default: 'Male' %>
         </div>
         <div  class='grid-form'>
+          <%= f.input :age, collection: 0..30, default: 0 %>
           <%= f.input :size, collection: ['Small', 'Medium', 'Large', 'X-large'], default: 'Small' %>
-          <%= f.input :specie, collection: ['Dog', 'Cat', 'Bird', 'Turtle', 'Fish', 'Other'], default: 'Dog' %>
         </div>
-        <%= f.input :address, placeholder: 'Tell us where you found our friend' %>
+        <div class='grid-form'>
+          <%= f.input :specie, collection: ['Dog', 'Cat', 'Bird', 'Turtle', 'Fish', 'Other'], default: 'Dog' %>
+          <%= f.input :address, placeholder: 'Where you found our friend' %>
+        </div>
         <%= f.input :description, placeholder: 'Tell more about our little friend and where you found then' %>
         <%= f.input :photos, as: :file, input_html: { multiple: true }%>
         <%= f.submit "Update", class: "btn btn-outline-primary animal p-0" %>
