@@ -2,7 +2,7 @@
   <% if user_signed_in? %>
       <%= form_tag animals_path, method: :get, class: 'form-inline text-center d-flex form-search' do %>
         <div>
-          <%= text_field_tag :address, params[:address], placeholder: "Find near you", class: 'form-control text-center search-location' %>
+          <%= text_field_tag :address, params[:address], placeholder: "Find near you", class: 'form-control-search text-center search-location' %>
         </div>
         <div>
           <% label :distance, "Distance (Km) : " %>
